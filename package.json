@@ -1,0 +1,17 @@
+{
+  "name": "loan-simulator",
+  "version": "1.0.0",
+  "description": "OOP application that provides a simple loan simulator.",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "jquery": "3.5.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.6.1"
+  },
+  "keywords": []
+}

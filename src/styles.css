@@ -1,0 +1,21 @@
+body {
+  color: white;
+  background-color: black;
+}
+table {
+  border: 1px solid #fabada;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  padding: 30px;
+  width: 100%;
+}
+table caption {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+td {
+  padding: 3px;
+}
+td.GRID_cell {
+  border: 1px solid grey;
+}
