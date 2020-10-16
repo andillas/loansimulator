@@ -4,6 +4,7 @@ export class Fee {
   quota: number;
   tie: number;
   aliveCapital: number;
+  interest: number;
   value: number = 0;
 
   constructor(
@@ -30,6 +31,7 @@ export class Fee {
       name: this.name,
       value: this.value,
       quota: this.quota,
+      interest: this.interest,
       aliveCapital: this.aliveCapital
     };
     return objFee;
@@ -40,7 +42,8 @@ export class Fee {
   };
 
   private generateFee = (): void => {
-    this.value = this.aliveCapital * this.tie + this.quota;
+    this.interest = this.aliveCapital * this.tie;
+    this.value = this.interest + this.quota;
     this.aliveCapital -= this.quota;
   };
 } //EOC
