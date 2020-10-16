@@ -5,12 +5,15 @@ import "./styles.css";
 
 function initPage(): void {
   //do some stuff at init
+  let requestedCapital: number = 10000;
+  let years: number = 5;
+  let tinPercent: number = 3;
 
-  let loan: Loan = new Loan(10000, 5, 3);
+  let loan: Loan = new Loan(requestedCapital, years, tinPercent);
   let loanData: object = loan.getLoanDataJson();
 
   let gridOptions: object = {
-    caption: "titu prueba 2",
+    caption: "Loan Simulation",
     cols: [
       {
         id: "period",
@@ -41,6 +44,13 @@ function initPage(): void {
         align: "right"
       },
       {
+        id: "interest",
+        title: "Interest",
+        type: "fl2",
+        width: "70px",
+        align: "right"
+      },
+      {
         id: "aliveCapital",
         title: "Alive Capital",
         type: "fl2",
@@ -52,11 +62,10 @@ function initPage(): void {
 
   let elGrid: Grid = new Grid(loanData, "gridHolder", gridOptions);
 
-  $("#btnRename").on("click", () => {
-    elGrid.setPropertyById("name", "title", "Fee Name");
-    elGrid.setPropertyById("name", "align", "right");
-    elGrid.setPropertyById("name", "display", "none");
-    elGrid.setPropertyById("value", "title", "Amount");
+  $("label > input").on("click", (e) => {
+    let chkId: string = e.target.id.replace("chkCol_", "");
+
+    elGrid.toggleColumnDisplay(chkId);
   });
 }
 $(initPage);
