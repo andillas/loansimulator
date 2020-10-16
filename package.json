@@ -1,7 +1,7 @@
 {
   "name": "loan-simulator",
   "version": "1.0.0",
-  "description": "OOP application that provides a simple loan simulator.",
+  "description": "",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
