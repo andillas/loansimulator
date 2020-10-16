@@ -56,7 +56,7 @@ function initPage(): void {
     elGrid.setPropertyById("name", "title", "Fee Name");
     elGrid.setPropertyById("name", "align", "right");
     elGrid.setPropertyById("name", "display", "none");
-    elGrid.setPropertyById("value", "title", "Amoooount");
+    elGrid.setPropertyById("value", "title", "Amount");
   });
 }
 $(initPage);
