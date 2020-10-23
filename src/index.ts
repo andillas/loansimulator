@@ -5,54 +5,49 @@ import "./styles.css";
 
 function initPage(): void {
   //do some stuff at init
-  let requestedCapital: number = 10000;
-  let years: number = 5;
-  let tinPercent: number = 3;
-
-  let loan: Loan = new Loan(requestedCapital, years, tinPercent);
-  let loanData: object = loan.getLoanDataJson();
+  var elGrid: Grid;
 
   let gridOptions: object = {
     caption: "Loan Simulation",
     cols: [
       {
         id: "period",
-        title: "Period",
+        title: "Período",
         type: "num",
         width: "20px",
         align: "right"
       },
       {
         id: "name",
-        title: "Name",
+        title: "Identificador",
         type: "str",
         width: "200px",
         align: "center"
       },
       {
         id: "quota",
-        title: "Amortized",
+        title: "Amortizado",
         type: "fl2",
         width: "100px",
         align: "right"
       },
       {
         id: "value",
-        title: "Value",
+        title: "Valor",
         type: "fl2",
         width: "100px",
         align: "right"
       },
       {
         id: "interest",
-        title: "Interest",
+        title: "Intereses",
         type: "fl2",
         width: "70px",
         align: "right"
       },
       {
         id: "aliveCapital",
-        title: "Alive Capital",
+        title: "Capital Vivo",
         type: "fl2",
         width: "150px",
         align: "right"
@@ -60,12 +55,42 @@ function initPage(): void {
     ]
   };
 
-  let elGrid: Grid = new Grid(loanData, "gridHolder", gridOptions);
+  $("#visibleColumnsSwitcher > .form-check-label").on("click", (e: any) => {
+    let chkId: string = $(e.target)
+      .find("input")
+      .prop("id")
+      .replace("chkCol_", "");
 
-  $("label > input").on("click", (e) => {
-    let chkId: string = e.target.id.replace("chkCol_", "");
+    if (elGrid) elGrid.toggleColumnDisplay(chkId);
+  });
 
-    elGrid.toggleColumnDisplay(chkId);
+  $("#btnCalculate").on("click", () => {
+    let requestedCapital: number = parseFloat($.trim($("#resCapital").val()));
+    let years: number = $.trim($("#resTiempo").val());
+    let tinPercent: number = $.trim($("#resTin").val());
+
+    if (
+      isNaN(requestedCapital) ||
+      requestedCapital < 1 ||
+      isNaN(years) ||
+      years < 1 ||
+      isNaN(tinPercent) ||
+      tinPercent < 0
+    ) {
+      alert(
+        "Es imprescindible configurar el Capital solicitado, los Años y el TIN"
+      );
+      return;
+    }
+
+    let loan: Loan = new Loan(requestedCapital, tinPercent, years);
+    let loanData: object = loan.getLoanDataJson();
+
+    $("#resTotalIntereses").val(loan.getTotalInterests());
+    $("#resTotalPagado").val(loan.getTotalPaid());
+
+    elGrid = new Grid(loanData, "gridHolder", gridOptions);
+    elGrid.reload();
   });
 }
 $(initPage);

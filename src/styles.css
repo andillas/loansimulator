@@ -5,6 +5,9 @@ body {
 #app {
   padding: 20px;
 }
+.mui-panel {
+  color: darkslateblue;
+}
 table {
   border: 5px solid steelblue;
   border-radius: 15px;

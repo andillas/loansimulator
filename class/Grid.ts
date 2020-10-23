@@ -13,6 +13,7 @@ class Grid {
   ];
 
   constructor(data: [], holder: string, params?: object) {
+    console.log("new Grid");
     this.data = data;
     this.holder = holder;
     if (params) this.setParams(params);

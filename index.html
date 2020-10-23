@@ -55,34 +55,70 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
     ></script>
   </head>
-
+  
   <body>
     <div id="app">
+      <div class="mui-panel container">
+        <div class="row">
+          <div class="col">
+            <div class="md-form">
+              <input type="text" id="resCapital" class="form-control" value="10000">
+              <label for="resCapital">Capital solicitado:</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="md-form">
+              <input type="text" id="resTiempo" class="form-control" value="3">
+              <label for="resTiempo">Años:</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="md-form">
+              <input type="text" id="resTin" class="form-control" value="3">
+              <label for="resTin">TIN (%):</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="md-form">
+              <input id="resTotalIntereses" value="0" type="text" class="form-control" disabled>
+              <label for="resTotalIntereses">Total intereses:</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="md-form">
+              <input id="resTotalPagado" value="0" type="text" class="form-control" disabled>
+              <label for="resTotalPagado">Total pagado:</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="md-form">
+                <button id="btnCalculate" type="button" class="btn btn-primary btn-md">Calcular</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="mui-panel">
-        <div class="mui-checkbox">
-          <label>
-            <input type="checkbox" id="chkCol_period" value="" checked />
-            Period
+        <div id="visibleColumnsSwitcher" class="btn-group" data-toggle="buttons">
+          <label class="btn btn-mdb-color form-check-label">
+            <input id="chkCol_period" class="form-check-input" type="checkbox" checked autocomplete="off"> Período
           </label>
-          <label>
-            <input type="checkbox" id="chkCol_name" value="" checked />
-            Name
+          <label class="btn btn-mdb-color form-check-label">
+            <input id="chkCol_name" class="form-check-input" type="checkbox" checked autocomplete="off"> Identificador
           </label>
-          <label>
-            <input type="checkbox" id="chkCol_quota" value="" checked />
-            Amortized
+          <label class="btn btn-mdb-color form-check-label">
+            <input id="chkCol_quota" class="form-check-input" type="checkbox" checked autocomplete="off"> Amortizado
           </label>
-          <label>
-            <input type="checkbox" id="chkCol_value" value="" checked />
-            Value
           </label>
-          <label>
-            <input type="checkbox" id="chkCol_interest" value="" checked />
-            Interest
+          <label class="btn btn-mdb-color form-check-label">
+            <input id="chkCol_value" class="form-check-input" type="checkbox" checked autocomplete="off"> Valor
           </label>
-          <label>
-            <input type="checkbox" id="chkCol_aliveCapital" value="" checked />
-            Alive Capital
+          </label>
+          <label class="btn btn-mdb-color form-check-label">
+            <input id="chkCol_interest" class="form-check-input" type="checkbox" checked autocomplete="off"> Intereses
+          </label>
+          </label>
+          <label class="btn btn-mdb-color form-check-label">
+            <input id="chkCol_aliveCapital" class="form-check-input" type="checkbox" checked autocomplete="off"> Capital Vivo
           </label>
         </div>
       </div>
