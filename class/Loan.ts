@@ -1,14 +1,13 @@
 import { Fee } from "./Fee";
 export class Loan {
-  private initCapital: number;
-  private tin: number;
-  private tie: number;
-  private duration: number;
-  private periods: number;
-  private baseFee: number;
-  private aliveCapital: number;
-  private totalInterests: number;
-  private totalValue: number;
+  private initCapital: number = 0;
+  private tin: number = 0;
+  private tie: number = 0;
+  private duration: number = 0;
+  private periods: number = 0;
+  private baseFee: number = 0;
+  private aliveCapital: number = 0;
+  private totalInterests: number = 0;
 
   private allFees: Fee[] = [];
   private currentFee: Fee;
@@ -47,6 +46,9 @@ export class Loan {
   public getTotalInterests(): number {
     return +this._round2Dec(this.totalInterests);
   }
+  public getDuration() {
+    return this.duration;
+  }
   //PRIVATE METHODS
 
   private _initLoan(): void {
@@ -62,7 +64,7 @@ export class Loan {
     }
     return this.allFees;
   }
-  public _setTotalInterests(): void {
+  private _setTotalInterests(): void {
     this.totalInterests = this.allFees.reduce(
       (sum, e) => (typeof e.interest === "number" ? sum + e.interest : sum),
       0
