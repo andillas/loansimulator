@@ -19,7 +19,7 @@ export class Fee {
     this.tie = tie;
     this.name = this.uniqueId(period.toString());
 
-    this.generateFee();
+    this._generateFee();
   }
   uniqueId = (seed?: string): string => {
     return (`${seed}/` || "") + Math.random().toString(36).slice(2);
@@ -41,7 +41,7 @@ export class Fee {
     return this.aliveCapital;
   };
 
-  private generateFee = (): void => {
+  private _generateFee = (): void => {
     this.interest = this.aliveCapital * this.tie;
     this.value = this.interest + this.quota;
     this.aliveCapital -= this.quota;
