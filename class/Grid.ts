@@ -1,10 +1,12 @@
 import $ from "jquery";
+import * as GridInterface from "../types/grid";
+import { LoanData } from "../types/loan";
 
 class Grid {
   private holder: string = "app";
   private caption: string = "";
   private cols: any[] = [];
-  private data: [] = [];
+  private data: LoanData[] = [];
 
   private defaultStyle: object = [
     { width: "100px" },
@@ -12,11 +14,15 @@ class Grid {
     { display: "block" }
   ];
 
-  constructor(data: [], holder: string, params?: object) {
+  constructor(
+    data: LoanData[],
+    holder: string,
+    options: GridInterface.GridOptions
+  ) {
     console.log("new Grid");
     this.data = data;
     this.holder = holder;
-    if (params) this.setParams(params);
+    if (options) this.setParams(options);
     this._init();
   }
 

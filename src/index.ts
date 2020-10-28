@@ -1,4 +1,6 @@
 import $ from "jquery";
+import * as GridTypes from "../types/grid.d";
+import { LoanData } from "../types/loan.d";
 import { Grid } from "../class/Grid";
 import { Loan } from "../class/Loan";
 import "./styles.css";
@@ -7,7 +9,7 @@ function initPage(): void {
   //do some stuff at init
   var elGrid: Grid;
 
-  let gridOptions: object = {
+  let gridOptions: GridTypes.GridOptions = {
     caption: "Loan Simulation",
     cols: [
       {
@@ -84,7 +86,7 @@ function initPage(): void {
     }
 
     let loan: Loan = new Loan(requestedCapital, tinPercent, years);
-    let loanData: object = loan.getLoanDataJson();
+    let loanData: LoanData[] = loan.getLoanDataJson();
 
     $("#resTotalIntereses").val(loan.getTotalInterests());
     $("#resTotalPagado").val(loan.getTotalPaid());
